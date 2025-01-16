@@ -11,12 +11,12 @@ public class towerBoardGame {
         int evenLimit = 32;
 
         int[][] towers = {
-                {0, 0}, //Odd Towers (1-2)
-                {0, 0}  //Even Towers (1,2)
+                {0, 0}, //Even Towers (1-2)
+                {0, 0}  //Odd Towers (1,2)
         };
         boolean[][] towerOpen = {
-                {true, true}, //Odd Towers Condition
-                {true, true}  //Even Towers -//-
+                {true, true}, //Even Towers Condition
+                {true, true}  //Odd Towers -//-
         };
 
         int oddPlayerScore = 0;
@@ -24,9 +24,10 @@ public class towerBoardGame {
 
         while ((towerOpen[0][0]) || (towerOpen[0][1]) || towerOpen[1][0] || towerOpen[1][1]) {
 
+
+
             int mainDice = rand.nextInt(12) + 1; //Random dice roll (1-12)
             System.out.println("Random number drawn " + mainDice);
-
 
             if (mainDice % 2 == 0) {
                 System.out.println("Even plays. ");
