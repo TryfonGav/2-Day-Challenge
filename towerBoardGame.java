@@ -2,7 +2,6 @@ import java.util.*;
 
 public class towerBoardGame {
     public static void main(String[] args) {
-        Scanner inputs = new Scanner(System.in);
         Random rand = new Random();
 
         String playerType;
@@ -11,7 +10,7 @@ public class towerBoardGame {
         int evenLimit = 32;
 
         int[][] towers = {
-                {0, 0}, //Even Towers (1-2)
+                {0, 0}, //Even Towers (1,2)
                 {0, 0}  //Odd Towers (1,2)
         };
         boolean[][] towerOpen = {
@@ -29,8 +28,9 @@ public class towerBoardGame {
             int mainDice = rand.nextInt(12) + 1; //Random dice roll (1-12)
             System.out.println("Random number drawn " + mainDice);
 
-            if (mainDice % 2 == 0) {
-                System.out.println("Even plays. ");
+
+            if (mainDice % 2 == 0 && (towerOpen[0][0] || towerOpen[0][1])) {
+                System.out.println("Even plays. (" + evenPlayerScore + ")");
                 playerType = "EVEN ";
                 playerTurn(towers[0], towerOpen[0], evenLimit, mainDice, playerType);
 
@@ -41,8 +41,8 @@ public class towerBoardGame {
                     towers[0][1] = 0;
                     evenPlayerScore += 100;
                 }
-            } else { //odd
-                System.out.println("Odd plays. ");
+            } else if (towerOpen[1][0] || towerOpen[1][1]){ //odd
+                System.out.println("Odd plays. (" + oddPlayerScore + ")");
                 playerType = "ODD ";
                 playerTurn(towers[1], towerOpen[1], oddLimit, mainDice, playerType);
                 if (towers[1][0] == oddLimit) {
@@ -63,11 +63,19 @@ public class towerBoardGame {
 
         } //PLAYER POINTS COMPARISON
         if (oddPlayerScore == evenPlayerScore) {
-            System.out.println("IT'S A TIE!");
+            System.out.println("EVEN Player : (" + evenPlayerScore + ") POINTS");
+            System.out.println("ODD Player : (" + oddPlayerScore + ") POINTS");
 
+            System.out.println("IT'S A TIE!");
         } else if (oddPlayerScore > evenPlayerScore) {
+            System.out.println("EVEN Player : (" + evenPlayerScore + ") POINTS");
+            System.out.println("ODD Player : (" + oddPlayerScore + ") POINTS");
+
             System.out.println("ODD PLAYER WINS WITH : (" + oddPlayerScore + ") POINTS");
         } else {
+            System.out.println("EVEN Player : (" + evenPlayerScore + ") POINTS");
+            System.out.println("ODD Player : (" + oddPlayerScore + ") POINTS");
+
             System.out.println("EVEN PLAYER WINS WITH : (" + evenPlayerScore + " POINTS)");
         }
     }
@@ -92,7 +100,7 @@ public class towerBoardGame {
 
                     userTowerChoice = -1;
                 }
-            } else if ((userTowerChoice < 0 || userTowerChoice > 2 || !towerOpen[userTowerChoice])) {
+            } else if ((userTowerChoice > 2 || !towerOpen[userTowerChoice])) {
                 System.out.println("***** Invalid input. Please try again. *****");
                 userTowerChoice = -1;
             }
