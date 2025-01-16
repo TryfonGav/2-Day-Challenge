@@ -34,7 +34,7 @@ This project was developed as part of a coursework challenge for the CCS1110/CCS
 - **Java 8** or higher
 - A Java IDE (e.g., IntelliJ IDEA, Eclipse, or NetBeans) or a command-line Java runtime environment.
 
----
+
 
 ---
 🙌 Acknowledgements
@@ -53,8 +53,14 @@ This project was collaboratively developed by:
    git clone https://github.com/your-username/odd-even-towers.git
    cd odd-even-towers
 
+   📝 License
+- This project is licensed under the MIT License. See the LICENSE file for details.
 
-javac towerBoardGame.java
+---
+
+---
+
+- javac towerBoardGame.java
 
 
-java towerBoardGame
+- java towerBoardGame
